@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     siteName: 'No Bull Line Dancers',
     images: [
       {
-        url: '/images/line-dancing.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'No Bull Line Dancers leading a line dancing class',
+        url: '/images/logo1.jpg',
+        width: 1021,
+        height: 1049,
+        alt: 'No Bull Line Dancers logo',
       },
     ],
     locale: 'en_US',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
     description:
       'Mobile line dancing for weddings, parties, venues, and corporate events in Hudson Valley and Upstate NY.',
-    images: ['/images/line-dancing.jpg'],
+    images: ['/images/logo1.jpg'],
   },
 }
 
