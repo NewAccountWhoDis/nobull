@@ -48,10 +48,10 @@ export function BookingForm() {
   const onSubmit = async (data: BookingFormData) => {
     setStatus('loading')
     try {
-      const res = await fetch('/api/book', {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'booking', ...data }).toString(),
       })
       if (!res.ok) throw new Error('Request failed')
       setStatus('success')

@@ -16,6 +16,17 @@ const TRUST = [
 export default function BookPage() {
   return (
     <div className="min-h-screen bg-espresso">
+      {/* Hidden form so Netlify detects the form at build time */}
+      <form name="booking" data-netlify="true" hidden>
+        <input type="text" name="name" />
+        <input type="tel" name="phone" />
+        <input type="email" name="email" />
+        <input type="date" name="eventDate" />
+        <input type="text" name="eventType" />
+        <input type="text" name="eventLocation" />
+        <input type="text" name="guestCount" />
+        <textarea name="notes" />
+      </form>
       <div className="spotlight wood-grain py-20 px-6 text-center border-b border-saddle">
         <p className="font-sans text-leather text-xs tracking-[0.5em] uppercase mb-3">
           Let's Make It Happen
