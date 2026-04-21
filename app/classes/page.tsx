@@ -3,74 +3,63 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Classes | No Bull Line Dancers',
-  description: 'Join a No Bull Line Dancers class in Ardisanback, NY. All skill levels welcome.',
+  description: 'Join a No Bull Line Dancers class in Forestport, NY and across Hudson Valley and Upstate NY. All skill levels welcome.',
 }
 
 const LEVELS = [
   {
-    icon: '🌱',
     name: 'Beginner',
-    desc: 'Never line danced? No problem. We start from scratch and have you moving in minutes.',
+    desc: 'Start with the count, the direction, and the confidence to join the next song.',
   },
   {
-    icon: '⭐',
     name: 'Intermediate',
-    desc: 'You know the basics and want more patterns, more music, more fun.',
+    desc: 'Build cleaner turns, faster transitions, and a wider list of dances.',
   },
   {
-    icon: '🔥',
     name: 'Advanced',
-    desc: 'Ready to challenge yourself with complex footwork and performance-level routines.',
+    desc: 'Work through sharper footwork and routines that need more memory and timing.',
   },
 ]
 
 export default function ClassesPage() {
   return (
     <div className="min-h-screen bg-espresso">
-      <div className="spotlight wood-grain py-20 px-6 text-center border-b border-saddle">
-        <p className="font-sans text-leather text-xs tracking-[0.5em] uppercase mb-3">Join Us</p>
-        <h1 className="font-serif font-black text-gold text-5xl mb-4">Classes</h1>
-        <div className="divider-gold w-32 mx-auto mb-6" />
-        <p className="font-sans text-parchment text-sm max-w-md mx-auto leading-relaxed">
-          All levels welcome. No experience needed — just boots (or sneakers)
-          and a willingness to have fun.
-        </p>
-      </div>
+      <header className="spotlight wood-grain border-b border-saddle py-16 sm:py-20">
+        <div className="section-shell max-w-4xl">
+          <p className="eyebrow mb-4">Classes</p>
+          <h1 className="font-serif text-5xl font-black leading-tight text-gold sm:text-6xl">Learn the steps before the next night out.</h1>
+          <p className="mt-6 max-w-2xl font-sans text-sm leading-7 text-parchment sm:text-base">
+            Come as you are. Boots are welcome, sneakers work fine, and every class is built to get people moving without making them feel put on the spot.
+          </p>
+        </div>
+      </header>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {LEVELS.map((level) => (
+      <div className="section-shell max-w-5xl py-14 sm:py-16">
+        <div className="mb-14 grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-saddle bg-saddle md:grid-cols-3">
+          {LEVELS.map((level, index) => (
             <div
               key={level.name}
-              className="bg-oak border border-saddle rounded-sm p-8 card-glow text-center"
+              className="bg-oak p-7"
             >
-              <div className="text-4xl mb-4" aria-hidden="true">{level.icon}</div>
-              <h2 className="font-serif font-black text-gold text-xl mb-3">{level.name}</h2>
-              <p className="font-sans text-leather text-sm leading-relaxed">{level.desc}</p>
+              <div className="mb-8 font-serif text-3xl font-black text-saddle">{String(index + 1).padStart(2, '0')}</div>
+              <h2 className="mb-3 font-sans text-sm font-black uppercase tracking-[0.14em] text-gold">{level.name}</h2>
+              <p className="font-sans text-sm leading-6 text-leather">{level.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-oak border border-gold rounded-sm p-10 card-glow text-center">
-          <h2 className="font-serif font-black text-gold text-3xl mb-3">Pricing & Schedule</h2>
-          <div className="divider-gold w-24 mx-auto mb-6" />
-          <p className="font-sans text-parchment text-sm leading-relaxed mb-2">
-            Schedule and pricing vary by season and location.
-          </p>
-          <p className="font-sans text-parchment text-sm leading-relaxed mb-8">
-            Contact us for current availability and rates.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="tel:8454163403"
-              className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-xs tracking-widest px-8 py-3 rounded-sm hover:opacity-90 transition-opacity"
-            >
+        <div className="grid gap-6 rounded-sm border border-gold bg-oak p-6 card-glow sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <h2 className="font-serif text-3xl font-black text-gold">Current schedule</h2>
+            <p className="mt-3 max-w-xl font-sans text-sm leading-7 text-parchment">
+              Schedule and pricing change by season and location. Call or send a message for the latest class dates and private lesson availability.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+            <a href="tel:8454163403" className="btn-primary">
               CALL 845-416-3403
             </a>
-            <Link
-              href="/contact"
-              className="border border-saddle text-leather font-sans text-xs tracking-widest px-6 py-3 rounded-sm hover:border-gold hover:text-gold transition-colors"
-            >
+            <Link href="/contact" className="btn-secondary">
               SEND A MESSAGE
             </Link>
           </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 
 const PHOTOS = [
@@ -11,18 +11,29 @@ const PHOTOS = [
 ]
 
 export function GallerySection() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <AnimatedSection id="gallery" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <p className="font-sans text-leather text-xs tracking-[0.4em] uppercase mb-4 text-center">Gallery</p>
-        <h2 className="font-serif font-black text-gold text-4xl mb-12 text-center">See Us In Action</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <AnimatedSection id="gallery" className="py-20 sm:py-24">
+      <div className="section-shell">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="eyebrow mb-4">Gallery</p>
+            <h2 className="font-serif text-4xl font-black text-gold sm:text-5xl">A few frames from the floor.</h2>
+          </div>
+          <p className="max-w-sm font-sans text-sm leading-6 text-leather">
+            Real rooms, real people, and the kind of dance-floor energy you can feel before the first count.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {PHOTOS.map((photo, i) => (
             <motion.div
               key={photo.src}
-              className="relative aspect-[4/3] rounded-sm overflow-hidden border border-saddle card-glow"
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className={`relative overflow-hidden rounded-sm border border-saddle card-glow ${
+                i === 0 ? 'aspect-[5/4] md:col-span-2 md:row-span-2' : 'aspect-[5/4]'
+              }`}
+              initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >

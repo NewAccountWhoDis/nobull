@@ -9,24 +9,26 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="bg-oak border-t border-saddle py-10 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="font-serif font-black text-gold tracking-widest text-lg">
-          NO BULL LINE DANCERS
+    <footer className="border-t border-saddle bg-oak py-10">
+      <div className="section-shell flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div className="font-serif text-lg font-black tracking-[0.16em] text-gold">
+            NO BULL LINE DANCERS
+          </div>
+          <div className="mt-2 font-sans text-xs tracking-wide text-saddle">
+            Forestport, NY / Hudson Valley & Upstate NY / 845-416-3403
+          </div>
         </div>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-x-6 gap-y-3">
           {FOOTER_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-leather text-xs tracking-widest hover:text-gold transition-colors"
+              className="font-sans text-xs font-black uppercase tracking-[0.16em] text-leather transition-colors hover:text-gold"
             >
               {link.label}
             </Link>
           ))}
-        </div>
-        <div className="font-sans text-saddle text-xs tracking-wide">
-          Ardisanback, NY · 845-416-3403
         </div>
       </div>
     </footer>

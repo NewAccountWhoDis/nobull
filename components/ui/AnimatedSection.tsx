@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ReactNode } from 'react'
 
 interface AnimatedSectionProps {
@@ -11,14 +11,16 @@ interface AnimatedSectionProps {
 }
 
 export function AnimatedSection({ children, className = '', delay = 0, id }: AnimatedSectionProps) {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
     <motion.section
       id={id}
       className={className}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
+      transition={prefersReducedMotion ? undefined : { duration: 0.6, ease: 'easeOut', delay }}
     >
       {children}
     </motion.section>

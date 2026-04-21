@@ -3,18 +3,31 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection'
 
 export function CtaSection() {
   return (
-    <AnimatedSection className="py-28 px-6 spotlight wood-grain text-center">
-      <h2 className="font-serif font-black text-gold text-5xl mb-4">Ready To Book?</h2>
-      <div className="divider-gold w-32 mx-auto mb-6" />
-      <p className="font-sans text-leather text-sm mb-10">
-        Call 845-416-3403 or fill out our booking form
-      </p>
-      <Link
-        href="/book"
-        className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-sm tracking-widest px-12 py-5 rounded-sm inline-block pulse-cta hover:opacity-90 transition-opacity"
-      >
-        GET A QUOTE →
-      </Link>
+    <AnimatedSection className="spotlight wood-grain py-20 sm:py-24">
+      <div className="section-shell text-center">
+        <p className="eyebrow mb-4">Bookings</p>
+        <h2 className="mx-auto max-w-3xl font-serif text-4xl font-black leading-tight text-gold sm:text-6xl">
+          Tell us the date. We'll help you shape the dance floor.
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl font-sans text-sm leading-7 text-parchment">
+          Send the basics and we'll reply with availability, fit, and pricing. Prefer a quick call?
+          Use the phone number below.
+        </p>
+        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/book" className="btn-primary pulse-cta">
+            Start Booking
+          </Link>
+          <a href="tel:8454163403" className="btn-secondary">
+            Call 845-416-3403
+          </a>
+        </div>
+        <Link
+          href="/book#faq"
+          className="mt-6 inline-flex font-sans text-xs font-black uppercase tracking-[0.16em] text-gold transition-colors hover:text-parchment"
+        >
+          Read booking FAQ
+        </Link>
+      </div>
     </AnimatedSection>
   )
 }

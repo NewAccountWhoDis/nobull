@@ -34,7 +34,7 @@ const TEXT_FIELDS: {
 ]
 
 const inputClass =
-  'w-full bg-oak border border-saddle focus:border-gold rounded-sm px-4 py-3 text-parchment text-sm placeholder-saddle outline-none transition-colors'
+  'w-full min-h-12 rounded-sm border border-saddle bg-oak px-4 py-3 text-sm text-parchment outline-none transition-colors placeholder:text-saddle focus:border-gold'
 
 export function BookingForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -48,7 +48,7 @@ export function BookingForm() {
   const onSubmit = async (data: BookingFormData) => {
     setStatus('loading')
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ 'form-name': 'booking', ...data }).toString(),
@@ -66,18 +66,21 @@ export function BookingForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-16"
+        className="rounded-sm border border-gold bg-oak px-6 py-14 text-center card-glow"
       >
-        <div className="text-6xl mb-6" aria-hidden="true">✓</div>
-        <h3 className="font-serif font-black text-gold text-3xl mb-3">Request Sent!</h3>
-        <p className="font-sans text-leather text-sm">We'll get back to you within 24 hours.</p>
+        <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-gold font-serif text-3xl text-gold" aria-hidden="true">
+          OK
+        </div>
+        <h3 className="mb-3 font-serif text-3xl font-black text-gold">Request sent.</h3>
+        <p className="font-sans text-sm text-leather">We'll get back to you within 24 hours.</p>
       </motion.div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <form name="booking" onSubmit={handleSubmit(onSubmit)} noValidate className="rounded-sm border border-saddle bg-espresso p-4 card-glow sm:p-6">
+      <input type="hidden" name="form-name" value="booking" />
+      <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         {TEXT_FIELDS.map((field, i) => (
           <motion.div
             key={field.name}
@@ -86,7 +89,7 @@ export function BookingForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
           >
-            <label htmlFor={field.name} className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+            <label htmlFor={field.name} className="mb-2 block font-sans text-[10px] font-black uppercase tracking-[0.16em] text-leather">
               {field.label}{field.required && ' *'}
             </label>
             <input
@@ -99,7 +102,7 @@ export function BookingForm() {
               className={inputClass}
             />
             {errors[field.name] && (
-              <p className="text-red-400 text-xs mt-1">{errors[field.name]?.message}</p>
+              <p className="mt-1 text-xs text-red-400">{errors[field.name]?.message}</p>
             )}
           </motion.div>
         ))}
@@ -110,7 +113,7 @@ export function BookingForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: TEXT_FIELDS.length * 0.05 }}
         >
-          <label htmlFor="eventType" className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+          <label htmlFor="eventType" className="mb-2 block font-sans text-[10px] font-black uppercase tracking-[0.16em] text-leather">
             EVENT TYPE *
           </label>
           <select
@@ -124,7 +127,7 @@ export function BookingForm() {
             ))}
           </select>
           {errors.eventType && (
-            <p className="text-red-400 text-xs mt-1">{errors.eventType.message}</p>
+            <p className="mt-1 text-xs text-red-400">{errors.eventType.message}</p>
           )}
         </motion.div>
 
@@ -134,7 +137,7 @@ export function BookingForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: (TEXT_FIELDS.length + 1) * 0.05 }}
         >
-          <label htmlFor="notes" className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+          <label htmlFor="notes" className="mb-2 block font-sans text-[10px] font-black uppercase tracking-[0.16em] text-leather">
             ADDITIONAL NOTES
           </label>
           <textarea
@@ -147,22 +150,22 @@ export function BookingForm() {
         </motion.div>
       </div>
 
-      <div className="text-center mt-6">
+      <div className="mt-6 text-center">
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-sm tracking-widest px-12 py-4 rounded-sm disabled:opacity-60 hover:opacity-90 transition-opacity pulse-cta"
+          className="btn-primary w-full pulse-cta disabled:opacity-60 sm:w-auto"
         >
-          {status === 'loading' ? 'SENDING...' : 'SEND MY REQUEST →'}
+          {status === 'loading' ? 'SENDING...' : 'SEND MY REQUEST'}
         </button>
 
         {status === 'error' && (
-          <p className="text-red-400 text-xs mt-3">
+          <p className="mt-3 text-xs text-red-400">
             Something went wrong. Please call 845-416-3403 directly.
           </p>
         )}
 
-        <p className="font-sans text-saddle text-xs mt-4 tracking-wide">
+        <p className="mt-4 font-sans text-xs tracking-wide text-saddle">
           Or call us directly: 845-416-3403
         </p>
       </div>

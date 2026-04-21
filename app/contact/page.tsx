@@ -8,13 +8,11 @@ export const metadata: Metadata = {
 
 const CONTACT_ITEMS = [
   {
-    icon: '📞',
     label: 'CALL US',
     value: '845-416-3403',
     href: 'tel:8454163403',
   },
   {
-    icon: '📘',
     label: 'FACEBOOK',
     value: 'No Bull Line Dancers',
     href: 'https://www.facebook.com/profile.php?id=61573169872550',
@@ -24,44 +22,43 @@ const CONTACT_ITEMS = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-espresso">
-      <div className="spotlight wood-grain py-20 px-6 text-center border-b border-saddle">
-        <p className="font-sans text-leather text-xs tracking-[0.5em] uppercase mb-3">Get In Touch</p>
-        <h1 className="font-serif font-black text-gold text-5xl mb-4">Contact</h1>
-        <div className="divider-gold w-32 mx-auto mb-6" />
-        <p className="font-sans text-parchment text-sm max-w-md mx-auto leading-relaxed">
-          Questions? Ready to book? We'd love to hear from you.
-        </p>
-      </div>
+      <header className="spotlight wood-grain border-b border-saddle py-16 sm:py-20">
+        <div className="section-shell max-w-4xl">
+          <p className="eyebrow mb-4">Contact</p>
+          <h1 className="font-serif text-5xl font-black leading-tight text-gold sm:text-6xl">
+            Questions, dates, venues, weird room layouts. Ask away.
+          </h1>
+          <p className="mt-6 max-w-2xl font-sans text-sm leading-7 text-parchment sm:text-base">
+            The fastest route is a call. Facebook works too. For event details, the booking form keeps everything in one place.
+          </p>
+        </div>
+      </header>
 
-      <div className="max-w-2xl mx-auto px-6 py-16 space-y-6">
+      <div className="section-shell max-w-3xl space-y-4 py-14 sm:py-16">
         {CONTACT_ITEMS.map((item) => (
           <a
             key={item.label}
             href={item.href}
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="flex items-center gap-6 bg-oak border border-saddle rounded-sm p-6 card-glow hover:border-gold transition-colors group"
+            className="group grid gap-2 rounded-sm border border-saddle bg-oak p-6 card-glow transition-colors hover:border-gold sm:grid-cols-[140px_1fr] sm:items-center"
           >
-            <div className="text-4xl" aria-hidden="true">{item.icon}</div>
             <div>
-              <div className="font-sans text-leather text-[10px] tracking-widest mb-1">{item.label}</div>
-              <div className="font-serif font-black text-gold text-xl group-hover:text-parchment transition-colors">
+              <div className="font-sans text-[10px] font-black uppercase tracking-[0.18em] text-leather">{item.label}</div>
+            </div>
+            <div className="font-serif text-2xl font-black text-gold transition-colors group-hover:text-parchment">
                 {item.value}
-              </div>
             </div>
           </a>
         ))}
 
-        <div className="bg-oak border border-saddle rounded-sm p-8 card-glow text-center">
-          <h2 className="font-serif font-black text-gold text-2xl mb-3">Ready to Book an Event?</h2>
-          <p className="font-sans text-leather text-sm mb-6 leading-relaxed">
-            Use our booking form for event inquiries — it helps us get you the right info fast.
+        <div className="rounded-sm border border-saddle bg-oak p-6 card-glow sm:p-8">
+          <h2 className="font-serif text-3xl font-black text-gold">Ready to book an event?</h2>
+          <p className="mb-6 mt-3 max-w-xl font-sans text-sm leading-7 text-leather">
+            Use our booking form for event inquiries. It gives us the date, venue, and crowd details we need to answer quickly.
           </p>
-          <Link
-            href="/book"
-            className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-xs tracking-widest px-8 py-3 rounded-sm inline-block hover:opacity-90 transition-opacity"
-          >
-            GO TO BOOKING FORM →
+          <Link href="/book" className="btn-primary">
+            Go to booking form
           </Link>
         </div>
       </div>

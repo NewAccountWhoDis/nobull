@@ -21,14 +21,65 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
   description:
-    'No Bull Line Dancers brings the boots, the moves, and the music to your event. Book us for weddings, parties, corporate events, and bars in Ardisanback, NY.',
-  icons: { icon: '/images/logo1.jpg' },
+    'No Bull Line Dancers brings mobile line dancing to weddings, parties, corporate events, and bars from Forestport, NY across Hudson Valley and Upstate NY.',
+  metadataBase: new URL('https://nobulllinedancers.com'),
+  openGraph: {
+    title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
+    description:
+      'Mobile line dancing for weddings, parties, venues, and corporate events in Hudson Valley and Upstate NY.',
+    url: '/',
+    siteName: 'No Bull Line Dancers',
+    images: [
+      {
+        url: '/images/line-dancing.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'No Bull Line Dancers leading a line dancing class',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
+    description:
+      'Mobile line dancing for weddings, parties, venues, and corporate events in Hudson Valley and Upstate NY.',
+    images: ['/images/line-dancing.jpg'],
+  },
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'No Bull Line Dancers',
+  description:
+    'Mobile line dancing instruction for weddings, parties, bars, venues, and corporate events.',
+  telephone: '+1-845-416-3403',
+  url: 'https://nobulllinedancers.com',
+  image: 'https://nobulllinedancers.com/images/logo1.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Forestport',
+    addressRegion: 'NY',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    'Forestport NY',
+    'Hudson Valley NY',
+    'Upstate NY',
+  ],
+  sameAs: ['https://www.facebook.com/profile.php?id=61573169872550'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <Nav />
         <PageTransition>{children}</PageTransition>
         <Footer />

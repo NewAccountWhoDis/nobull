@@ -3,47 +3,62 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Merch | No Bull Line Dancers',
-  description: 'Official No Bull Line Dancers merchandise. Rep the brand.',
+  description: 'Official No Bull Line Dancers shirts, hoodies, quarter zips, and tanks.',
 }
+
+const MERCH_ITEMS = [
+  { name: "V-neck women's", price: '$24' },
+  { name: 'Crewneck unisex', price: '$20' },
+  { name: 'Hoodie unisex', price: '$35' },
+  { name: 'Quarter zip unisex', price: '$33' },
+  { name: 'Racerback tank top', price: '$22' },
+]
 
 export default function MerchPage() {
   return (
     <div className="min-h-screen bg-espresso">
-      <div className="spotlight wood-grain py-20 px-6 text-center border-b border-saddle">
-        <p className="font-sans text-leather text-xs tracking-[0.5em] uppercase mb-3">Rep The Brand</p>
-        <h1 className="font-serif font-black text-gold text-5xl mb-4">Merch</h1>
-        <div className="divider-gold w-32 mx-auto mb-6" />
-        <p className="font-sans text-parchment text-sm max-w-md mx-auto leading-relaxed">
-          Official No Bull gear. When the beat drops, look the part.
-        </p>
-      </div>
+      <header className="spotlight wood-grain border-b border-saddle py-16 sm:py-20">
+        <div className="section-shell max-w-4xl">
+          <p className="eyebrow mb-4">Merch</p>
+          <h1 className="font-serif text-5xl font-black leading-tight text-gold sm:text-6xl">Gear for class nights, events, and showing up No Bull.</h1>
+          <p className="mt-6 max-w-2xl font-sans text-sm leading-7 text-parchment sm:text-base">
+            Official No Bull apparel is available by direct order. Choose your style, message for sizing,
+            and we will help with availability and pickup details.
+          </p>
+        </div>
+      </header>
 
-      <div className="max-w-2xl mx-auto px-6 py-16">
-        <div className="bg-oak border border-saddle rounded-sm overflow-hidden card-glow">
-          <div className="relative aspect-video bg-espresso">
+      <div className="section-shell max-w-5xl py-14 sm:py-16">
+        <div className="grid overflow-hidden rounded-sm border border-saddle bg-oak card-glow md:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative min-h-[300px] bg-espresso sm:min-h-[420px]">
             <Image
               src="/images/t-shirts.jpg"
-              alt="No Bull Line Dancers T-Shirt — front and back"
+              alt="No Bull Line Dancers T-Shirt front and back"
               fill
-              className="object-contain p-8"
+              className="object-contain p-6 sm:p-10"
             />
           </div>
 
-          <div className="p-8 border-t border-saddle text-center">
-            <h2 className="font-serif font-black text-gold text-3xl mb-2">Classic Tee</h2>
-            <p className="font-sans text-leather text-sm mb-1 italic">
+          <div className="border-t border-saddle p-6 sm:p-8 md:border-l md:border-t-0">
+            <p className="eyebrow mb-4">Available styles</p>
+            <h2 className="font-serif text-4xl font-black text-gold">No Bull apparel, priced by style.</h2>
+            <p className="mt-4 font-sans text-sm italic text-leather">
               "When the Beat Drops, the Bullsh*t Stops"
             </p>
-            <div className="divider-gold w-24 mx-auto my-4" />
-            <p className="font-sans text-parchment text-sm leading-relaxed mb-8 max-w-sm mx-auto">
-              Black V-neck with the No Bull skull logo on the front.
-              Available in multiple sizes. Contact us to place an order.
+            <div className="my-6 h-px w-24 bg-gold" />
+            <div className="mb-6 divide-y divide-saddle border-y border-saddle">
+              {MERCH_ITEMS.map((item) => (
+                <div key={item.name} className="flex items-center justify-between gap-4 py-3">
+                  <span className="font-sans text-sm text-parchment">{item.name}</span>
+                  <span className="font-serif text-2xl font-black text-gold">{item.price}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mb-8 max-w-sm font-sans text-sm leading-7 text-parchment">
+              Message for the size chart or any additional questions before ordering.
             </p>
-            <a
-              href="tel:8454163403"
-              className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-xs tracking-widest px-10 py-3 rounded-sm inline-block hover:opacity-90 transition-opacity"
-            >
-              CALL TO ORDER — 845-416-3403
+            <a href="tel:8454163403" className="btn-primary">
+              Call or message to order
             </a>
           </div>
         </div>
