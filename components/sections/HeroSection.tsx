@@ -18,8 +18,6 @@ export function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden spotlight wood-grain"
     >
-      <div className="absolute inset-0 wood-grain pointer-events-none" />
-
       <motion.div style={{ y: logoY }} className="flex flex-col items-center z-10 px-6 text-center">
         <Image
           src="/images/logo1.jpg"
@@ -64,7 +62,7 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-8 text-saddle text-xl animate-bounce">↓</div>
+      <div className="absolute bottom-8 text-saddle text-xl animate-bounce" aria-hidden="true">↓</div>
     </div>
   )
 }
