@@ -13,7 +13,7 @@ const config: Config = {
         saddle:   '#4a2c15',
         gold:     '#d4a574',
         leather:  '#8b5e3c',
-        parchment:'#f5e6cc',
+        parchment: '#f5e6cc',
       },
       fontFamily: {
         serif: ['var(--font-playfair)', 'Georgia', 'serif'],
