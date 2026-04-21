@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Contact | No Bull Line Dancers',
@@ -41,7 +42,7 @@ export default function ContactPage() {
             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="flex items-center gap-6 bg-oak border border-saddle rounded-sm p-6 card-glow hover:border-gold transition-colors group"
           >
-            <div className="text-4xl">{item.icon}</div>
+            <div className="text-4xl" aria-hidden="true">{item.icon}</div>
             <div>
               <div className="font-sans text-leather text-[10px] tracking-widest mb-1">{item.label}</div>
               <div className="font-serif font-black text-gold text-xl group-hover:text-parchment transition-colors">
@@ -56,12 +57,12 @@ export default function ContactPage() {
           <p className="font-sans text-leather text-sm mb-6 leading-relaxed">
             Use our booking form for event inquiries — it helps us get you the right info fast.
           </p>
-          <a
+          <Link
             href="/book"
             className="bg-gradient-to-r from-gold to-leather text-espresso font-black text-xs tracking-widest px-8 py-3 rounded-sm inline-block hover:opacity-90 transition-opacity"
           >
             GO TO BOOKING FORM →
-          </a>
+          </Link>
         </div>
       </div>
     </div>

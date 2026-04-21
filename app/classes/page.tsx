@@ -44,7 +44,7 @@ export default function ClassesPage() {
               key={level.name}
               className="bg-oak border border-saddle rounded-sm p-8 card-glow text-center"
             >
-              <div className="text-4xl mb-4">{level.icon}</div>
+              <div className="text-4xl mb-4" aria-hidden="true">{level.icon}</div>
               <h2 className="font-serif font-black text-gold text-xl mb-3">{level.name}</h2>
               <p className="font-sans text-leather text-sm leading-relaxed">{level.desc}</p>
             </div>
