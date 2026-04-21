@@ -7,9 +7,14 @@ const REQUIRED: (keyof BookingFormData)[] = [
 ]
 
 export async function POST(req: NextRequest) {
-  const body = (await req.json()) as Partial<BookingFormData>
+  let body: Partial<BookingFormData>
+  try {
+    body = (await req.json()) as Partial<BookingFormData>
+  } catch {
+    return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+  }
 
-  const missing = REQUIRED.filter((f) => !body[f])
+  const missing = REQUIRED.filter((f) => !body[f]?.trim())
   if (missing.length > 0) {
     return NextResponse.json(
       { error: `Missing required fields: ${missing.join(', ')}` },
