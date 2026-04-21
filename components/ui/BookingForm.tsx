@@ -68,7 +68,7 @@ export function BookingForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-16"
       >
-        <div className="text-6xl mb-6">✓</div>
+        <div className="text-6xl mb-6" aria-hidden="true">✓</div>
         <h3 className="font-serif font-black text-gold text-3xl mb-3">Request Sent!</h3>
         <p className="font-sans text-leather text-sm">We'll get back to you within 24 hours.</p>
       </motion.div>
@@ -86,13 +86,14 @@ export function BookingForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
           >
-            <label className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+            <label htmlFor={field.name} className="block font-sans text-leather text-[10px] tracking-widest mb-2">
               {field.label}{field.required && ' *'}
             </label>
             <input
               {...register(field.name, {
                 required: field.required ? `${field.label} is required` : false,
               })}
+              id={field.name}
               type={field.type ?? 'text'}
               placeholder={field.placeholder}
               className={inputClass}
@@ -109,11 +110,12 @@ export function BookingForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: TEXT_FIELDS.length * 0.05 }}
         >
-          <label className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+          <label htmlFor="eventType" className="block font-sans text-leather text-[10px] tracking-widest mb-2">
             EVENT TYPE *
           </label>
           <select
             {...register('eventType', { required: 'Event type is required' })}
+            id="eventType"
             className={inputClass}
           >
             <option value="">Select event type...</option>
@@ -132,11 +134,12 @@ export function BookingForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: (TEXT_FIELDS.length + 1) * 0.05 }}
         >
-          <label className="block font-sans text-leather text-[10px] tracking-widest mb-2">
+          <label htmlFor="notes" className="block font-sans text-leather text-[10px] tracking-widest mb-2">
             ADDITIONAL NOTES
           </label>
           <textarea
             {...register('notes')}
+            id="notes"
             placeholder="Tell us anything else about your event..."
             rows={4}
             className={`${inputClass} resize-none`}
