@@ -1,0 +1,117 @@
+<h2>Site Architecture — Option C</h2>
+<p class="subtitle">Cinematic landing page + focused standalone pages. Does this structure look right?</p>
+
+<div class="section">
+  <div class="label">Landing Page (scroll sections)</div>
+  <div style="background:#1a1008;border:1px solid #5a3a1a;border-radius:8px;overflow:hidden;margin-top:12px;">
+
+    <div style="background:#2c1a0e;border-bottom:1px solid #5a3a1a;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#d4a574,#8b5e3c);border-radius:4px;"></div>
+        <span style="color:#d4a574;font-weight:700;letter-spacing:2px;font-size:13px;">NO BULL LINE DANCERS</span>
+      </div>
+      <div style="display:flex;gap:20px;">
+        <span style="color:#a07850;font-size:11px;">Classes</span>
+        <span style="color:#a07850;font-size:11px;">Gallery</span>
+        <span style="color:#a07850;font-size:11px;">Merch</span>
+        <span style="color:#a07850;font-size:11px;">Contact</span>
+        <span style="background:#d4a574;color:#1a0f07;padding:4px 12px;font-size:11px;font-weight:700;border-radius:2px;">BOOK US</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div style="background:linear-gradient(180deg,#1a0f07 0%,#2c1a0e 100%);padding:40px 20px;text-align:center;border-bottom:1px solid #3a2010;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(201,160,80,0.03) 2px,rgba(201,160,80,0.03) 4px);pointer-events:none;"></div>
+      <div style="color:#5a3a1a;font-size:10px;letter-spacing:4px;margin-bottom:8px;">ARDISANBACK, NY</div>
+      <div style="color:#d4a574;font-size:32px;font-weight:900;letter-spacing:4px;font-family:serif;line-height:1.1;">WHEN THE BEAT<br/>DROPS</div>
+      <div style="color:#8b5e3c;font-size:11px;letter-spacing:3px;margin:8px 0 16px;">THE BULLSH*T STOPS</div>
+      <div style="display:inline-block;background:linear-gradient(135deg,#d4a574,#8b5e3c);color:#1a0f07;padding:10px 28px;font-size:12px;font-weight:900;letter-spacing:3px;border-radius:2px;">HIRE US FOR YOUR EVENT</div>
+      <div style="color:#5a3a1a;font-size:10px;margin-top:8px;">↓ scroll</div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#d4a574,transparent);opacity:0.3;"></div>
+    </div>
+
+    <!-- Scroll sections list -->
+    <div style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:#2c1a0e;border:1px solid #3a2010;border-radius:4px;padding:12px;display:flex;align-items:center;gap:10px;">
+        <div style="color:#d4a574;font-size:16px;">💃</div>
+        <div>
+          <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">ABOUT US</div>
+          <div style="color:#5a3a1a;font-size:10px;">Story, mission, instructors</div>
+        </div>
+      </div>
+      <div style="background:#2c1a0e;border:1px solid #3a2010;border-radius:4px;padding:12px;display:flex;align-items:center;gap:10px;">
+        <div style="color:#d4a574;font-size:16px;">🎯</div>
+        <div>
+          <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">SERVICES</div>
+          <div style="color:#5a3a1a;font-size:10px;">What we bring to your event</div>
+        </div>
+      </div>
+      <div style="background:#2c1a0e;border:1px solid #3a2010;border-radius:4px;padding:12px;display:flex;align-items:center;gap:10px;">
+        <div style="color:#d4a574;font-size:16px;">📸</div>
+        <div>
+          <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">GALLERY</div>
+          <div style="color:#5a3a1a;font-size:10px;">Photos from real events</div>
+        </div>
+      </div>
+      <div style="background:#2c1a0e;border:1px solid #3a2010;border-radius:4px;padding:12px;display:flex;align-items:center;gap:10px;">
+        <div style="color:#d4a574;font-size:16px;">🎉</div>
+        <div>
+          <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">UPCOMING EVENTS</div>
+          <div style="color:#5a3a1a;font-size:10px;">Public shows & socials</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Standalone Pages (full routes)</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;">
+    <div style="background:#2c1a0e;border:1px solid #5a3a1a;border-radius:6px;padding:16px;text-align:center;">
+      <div style="color:#d4a574;font-size:20px;margin-bottom:8px;">📅</div>
+      <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">/classes</div>
+      <div style="color:#5a3a1a;font-size:10px;margin-top:4px;">Schedule, levels, pricing</div>
+    </div>
+    <div style="background:#2c1a0e;border:2px solid #d4a574;border-radius:6px;padding:16px;text-align:center;">
+      <div style="color:#d4a574;font-size:20px;margin-bottom:8px;">✍️</div>
+      <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">/book</div>
+      <div style="color:#5a3a1a;font-size:10px;margin-top:4px;">Hire us — primary CTA</div>
+    </div>
+    <div style="background:#2c1a0e;border:1px solid #5a3a1a;border-radius:6px;padding:16px;text-align:center;">
+      <div style="color:#d4a574;font-size:20px;margin-bottom:8px;">👕</div>
+      <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">/merch</div>
+      <div style="color:#5a3a1a;font-size:10px;margin-top:4px;">T-shirts & branded gear</div>
+    </div>
+    <div style="background:#2c1a0e;border:1px solid #5a3a1a;border-radius:6px;padding:16px;text-align:center;">
+      <div style="color:#d4a574;font-size:20px;margin-bottom:8px;">📞</div>
+      <div style="color:#d4a574;font-size:11px;font-weight:700;letter-spacing:1px;">/contact</div>
+      <div style="color:#5a3a1a;font-size:10px;margin-top:4px;">Phone, social, form</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Motion Plan</div>
+  <div style="background:#1a1008;border:1px solid #3a2010;border-radius:6px;padding:16px;margin-top:12px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div>
+        <div style="color:#d4a574;font-size:11px;font-weight:700;margin-bottom:6px;">SCROLL ANIMATIONS</div>
+        <ul style="color:#a07850;font-size:11px;margin:0;padding-left:16px;line-height:1.8;">
+          <li>Hero parallax (logo floats as you scroll)</li>
+          <li>Sections fade + slide up on enter</li>
+          <li>Gallery images stagger in</li>
+          <li>Horizontal scroll on services strip</li>
+        </ul>
+      </div>
+      <div>
+        <div style="color:#d4a574;font-size:11px;font-weight:700;margin-bottom:6px;">PAGE & UI MOTION</div>
+        <ul style="color:#a07850;font-size:11px;margin:0;padding-left:16px;line-height:1.8;">
+          <li>Page transition wipe between routes</li>
+          <li>Animated nav underline on hover</li>
+          <li>Booking form fields animate in on focus</li>
+          <li>Button pulse on the primary Book CTA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
