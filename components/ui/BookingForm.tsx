@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { formatPhoneNumber } from '@/lib/phone'
 
 export type BookingFormData = {
   name: string
@@ -43,7 +44,14 @@ export function BookingForm() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<BookingFormData>()
+
+  const phoneRegistration = register('phone', {
+    required: 'PHONE NUMBER is required',
+    validate: (value) => value.replace(/\D/g, '').length === 10 || 'Enter a 10 digit phone number',
+    setValueAs: formatPhoneNumber,
+  })
 
   const onSubmit = async (data: BookingFormData) => {
     setStatus('loading')
@@ -72,7 +80,7 @@ export function BookingForm() {
           OK
         </div>
         <h3 className="mb-3 font-serif text-3xl font-black text-gold">Request sent.</h3>
-        <p className="font-sans text-sm text-leather">We'll get back to you within 24 hours.</p>
+        <p className="font-sans text-sm text-leather">We&apos;ll get back to you within 24 hours.</p>
       </motion.div>
     )
   }
@@ -101,13 +109,28 @@ export function BookingForm() {
               {field.label}{field.required && ' *'}
             </label>
             <input
-              {...register(field.name, {
-                required: field.required ? `${field.label} is required` : false,
-              })}
+              {...(field.name === 'phone'
+                ? phoneRegistration
+                : register(field.name, {
+                    required: field.required ? `${field.label} is required` : false,
+                  }))}
               id={field.name}
-              type={field.type ?? 'text'}
+              type={field.name === 'phone' ? 'tel' : field.type ?? 'text'}
+              inputMode={field.name === 'phone' ? 'numeric' : undefined}
+              autoComplete={field.name === 'phone' ? 'tel' : undefined}
+              maxLength={field.name === 'phone' ? 16 : undefined}
               placeholder={field.placeholder}
               className={inputClass}
+              onChange={
+                field.name === 'phone'
+                  ? (event) => {
+                      setValue('phone', formatPhoneNumber(event.target.value), {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      })
+                    }
+                  : undefined
+              }
             />
             {errors[field.name] && (
               <p className="mt-1 text-xs text-red-400">{errors[field.name]?.message}</p>

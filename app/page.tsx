@@ -5,7 +5,11 @@ import { GallerySection } from '@/components/sections/GallerySection'
 import { EventsSection }  from '@/components/sections/EventsSection'
 import { CtaSection }     from '@/components/sections/CtaSection'
 
-export default function HomePage() {
+import { connection } from 'next/server'
+
+export default async function HomePage() {
+  await connection()
+
   return (
     <>
       <HeroSection />

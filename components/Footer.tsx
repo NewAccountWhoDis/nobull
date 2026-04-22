@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { HiddenAdminEntry } from '@/components/admin/HiddenAdminEntry'
 
 const FOOTER_LINKS = [
   { label: 'CLASSES', href: '/classes' },
@@ -18,14 +19,17 @@ export function Footer() {
           <div className="mt-2 font-sans text-xs tracking-wide text-saddle">
             Forestport, NY / Hudson Valley & Upstate NY / 845-416-3403
           </div>
-          <a
-            href="https://www.meetmister.black"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex font-serif text-sm italic tracking-[0.08em] text-parchment/70 transition-colors hover:text-gold"
-          >
-            Designed By JxB
-          </a>
+          <div className="mt-4 inline-flex items-center font-serif text-sm italic tracking-[0.08em] text-parchment/70">
+            <HiddenAdminEntry />
+            <a
+              href="https://www.meetmister.black"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-gold"
+            >
+              Designed By JxB
+            </a>
+          </div>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">
           {FOOTER_LINKS.map((link) => (

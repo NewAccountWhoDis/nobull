@@ -1,0 +1,16 @@
+export function formatPhoneNumber(value: string) {
+  const digits = value.replace(/\D/g, '').slice(0, 10)
+  const area = digits.slice(0, 3)
+  const prefix = digits.slice(3, 6)
+  const line = digits.slice(6, 10)
+
+  if (digits.length <= 3) {
+    return area
+  }
+
+  if (digits.length <= 6) {
+    return `(${area}) ${prefix}`
+  }
+
+  return `(${area}) ${prefix} - ${line}`
+}

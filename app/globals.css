@@ -68,6 +68,14 @@
     @apply inline-flex min-h-12 items-center justify-center rounded-sm border border-saddle px-6 py-3 text-center font-sans text-xs font-black uppercase tracking-[0.16em] text-parchment transition-colors hover:border-gold hover:text-gold;
   }
 
+  .admin-input {
+    @apply min-h-12 w-full rounded-sm border border-saddle bg-espresso px-4 py-3 font-sans text-sm text-parchment outline-none transition-colors placeholder:text-leather disabled:cursor-not-allowed disabled:opacity-60 focus:border-gold;
+  }
+
+  .admin-label {
+    @apply font-sans text-[11px] font-black uppercase tracking-[0.16em] text-leather;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

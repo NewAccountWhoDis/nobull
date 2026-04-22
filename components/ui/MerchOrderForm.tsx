@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
+import { formatPhoneNumber } from '@/lib/phone'
 
 type MerchItem = {
   style: string
@@ -40,6 +41,7 @@ export function MerchOrderForm() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<MerchOrderFormData>({
     defaultValues: {
       name: '',
@@ -50,6 +52,11 @@ export function MerchOrderForm() {
     },
   })
   const { fields, append, remove } = useFieldArray({ control, name: 'items' })
+  const phoneRegistration = register('phone', {
+    required: 'Phone is required',
+    validate: (value) => value.replace(/\D/g, '').length === 10 || 'Enter a 10 digit phone number',
+    setValueAs: formatPhoneNumber,
+  })
 
   const onSubmit = async (data: MerchOrderFormData) => {
     setStatus('loading')
@@ -136,11 +143,20 @@ export function MerchOrderForm() {
                 Phone *
               </label>
               <input
-                {...register('phone', { required: 'Phone is required' })}
+                {...phoneRegistration}
                 id="merch-phone"
                 type="tel"
+                inputMode="numeric"
+                autoComplete="tel"
+                maxLength={16}
                 className={inputClass}
-                placeholder="(000) 000-0000"
+                placeholder="(000) 000 - 0000"
+                onChange={(event) => {
+                  setValue('phone', formatPhoneNumber(event.target.value), {
+                    shouldDirty: true,
+                    shouldValidate: true,
+                  })
+                }}
               />
               {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
             </div>
