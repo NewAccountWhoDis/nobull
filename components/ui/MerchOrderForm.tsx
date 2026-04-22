@@ -19,11 +19,11 @@ type MerchOrderFormData = {
 }
 
 const STYLE_OPTIONS = [
-  "V-neck women's",
   'Crewneck unisex',
   'Hoodie unisex',
   'Quarter zip unisex',
   'Racerback tank top',
+  "V-neck women's",
 ]
 
 const SIZE_OPTIONS = ['XS', 'S', 'M', 'L', 'XL', '2X']
@@ -59,7 +59,7 @@ export function MerchOrderForm() {
       .join('\n')
 
     try {
-      const res = await fetch('/__forms.html', {
+      const res = await fetch('/merch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
@@ -106,7 +106,15 @@ export function MerchOrderForm() {
           Submit order request
         </button>
       ) : (
-        <form name="merch-order" onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+        <form
+          name="merch-order"
+          method="POST"
+          action="/merch"
+          data-netlify="true"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          className="space-y-5"
+        >
           <input type="hidden" name="form-name" value="merch-order" />
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

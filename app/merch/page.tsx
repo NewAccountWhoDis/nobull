@@ -8,16 +8,25 @@ export const metadata: Metadata = {
 }
 
 const MERCH_ITEMS = [
-  { name: "V-neck women's", price: '$24' },
   { name: 'Crewneck unisex', price: '$20' },
   { name: 'Hoodie unisex', price: '$35' },
   { name: 'Quarter zip unisex', price: '$33' },
   { name: 'Racerback tank top', price: '$22' },
+  { name: "V-neck women's", price: '$24' },
 ]
 
 export default function MerchPage() {
   return (
     <div className="min-h-screen bg-espresso">
+      <form name="merch-order" method="POST" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="merch-order" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <textarea name="items" />
+        <textarea name="notes" />
+      </form>
+
       <header className="spotlight wood-grain border-b border-saddle py-16 sm:py-20">
         <div className="section-shell max-w-4xl">
           <p className="eyebrow mb-4">Merch</p>

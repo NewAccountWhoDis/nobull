@@ -15,7 +15,7 @@ export type BookingFormData = {
   notes: string
 }
 
-const EVENT_TYPES = ['Wedding', 'Birthday Party', 'Corporate', 'Bar or Venue', 'Other']
+const EVENT_TYPES = ['Bar or Venue', 'Birthday Party', 'Corporate', 'Wedding', 'Other']
 
 const TEXT_FIELDS: {
   name: keyof BookingFormData
@@ -48,7 +48,7 @@ export function BookingForm() {
   const onSubmit = async (data: BookingFormData) => {
     setStatus('loading')
     try {
-      const res = await fetch('/__forms.html', {
+      const res = await fetch('/book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ 'form-name': 'booking', ...data }).toString(),
@@ -78,7 +78,15 @@ export function BookingForm() {
   }
 
   return (
-    <form name="booking" onSubmit={handleSubmit(onSubmit)} noValidate className="rounded-sm border border-saddle bg-espresso p-4 card-glow sm:p-6">
+    <form
+      name="booking"
+      method="POST"
+      action="/book"
+      data-netlify="true"
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      className="rounded-sm border border-saddle bg-espresso p-4 card-glow sm:p-6"
+    >
       <input type="hidden" name="form-name" value="booking" />
       <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         {TEXT_FIELDS.map((field, i) => (
