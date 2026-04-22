@@ -48,7 +48,7 @@ export function BookingForm() {
   const onSubmit = async (data: BookingFormData) => {
     setStatus('loading')
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ 'form-name': 'booking', ...data }).toString(),
@@ -81,7 +81,7 @@ export function BookingForm() {
     <form
       name="booking"
       method="POST"
-      action="/"
+      action="/forms.html"
       data-netlify="true"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
