@@ -5,7 +5,7 @@
     <title>Netlify Forms</title>
   </head>
   <body>
-    <form name="booking" data-netlify="true" hidden>
+    <form name="booking" method="POST" data-netlify="true" hidden>
       <input type="hidden" name="form-name" value="booking" />
       <input type="text" name="name" />
       <input type="tel" name="phone" />
@@ -16,7 +16,8 @@
       <input type="text" name="guestCount" />
       <textarea name="notes"></textarea>
     </form>
-    <form name="merch-order" data-netlify="true" hidden>
+
+    <form name="merch-order" method="POST" data-netlify="true" hidden>
       <input type="hidden" name="form-name" value="merch-order" />
       <input type="text" name="name" />
       <input type="email" name="email" />

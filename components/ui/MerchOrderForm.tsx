@@ -59,7 +59,7 @@ export function MerchOrderForm() {
       .join('\n')
 
     try {
-      const res = await fetch('/merch', {
+      const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
@@ -109,7 +109,7 @@ export function MerchOrderForm() {
         <form
           name="merch-order"
           method="POST"
-          action="/merch"
+          action="/"
           data-netlify="true"
           onSubmit={handleSubmit(onSubmit)}
           noValidate
