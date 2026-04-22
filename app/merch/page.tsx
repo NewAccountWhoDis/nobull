@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { MerchOrderForm } from '@/components/ui/MerchOrderForm'
 
 export const metadata: Metadata = {
   title: 'Merch | No Bull Line Dancers',
@@ -57,9 +58,7 @@ export default function MerchPage() {
             <p className="mb-8 max-w-sm font-sans text-sm leading-7 text-parchment">
               Message for the size chart or any additional questions before ordering.
             </p>
-            <a href="tel:8454163403" className="btn-primary">
-              Call or message to order
-            </a>
+            <MerchOrderForm />
           </div>
         </div>
       </div>

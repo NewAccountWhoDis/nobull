@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61573169872550'
+
 export const metadata: Metadata = {
   title: 'Classes | No Bull Line Dancers',
   description: 'Join a No Bull Line Dancers class in Forestport, NY and across Hudson Valley and Upstate NY. All skill levels welcome.',
@@ -50,12 +52,21 @@ export default function ClassesPage() {
 
         <div className="grid gap-6 rounded-sm border border-gold bg-oak p-6 card-glow sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <h2 className="font-serif text-3xl font-black text-gold">Current schedule</h2>
+            <h2 className="font-serif text-3xl font-black text-gold">Schedule</h2>
             <p className="mt-3 max-w-xl font-sans text-sm leading-7 text-parchment">
-              Schedule and pricing change by season and location. Call or send a message for the latest class dates and private lesson availability.
+              Schedule and pricing change by season and location. Follow us on Facebook for the latest class dates and private lesson availability.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-3"
+            >
+              <FacebookIcon />
+              Facebook
+            </a>
             <a href="tel:8454163403" className="btn-primary">
               CALL 845-416-3403
             </a>
@@ -66,5 +77,16 @@ export default function ClassesPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+function FacebookIcon() {
+  return (
+    <span
+      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1877f2] font-sans text-lg font-black leading-none text-white"
+      aria-hidden="true"
+    >
+      f
+    </span>
   )
 }

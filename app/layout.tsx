@@ -18,11 +18,22 @@ const inter = Inter({
   display: 'swap',
 })
 
+const siteUrl = 'https://www.nobulldancers.com'
+
 export const metadata: Metadata = {
   title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
   description:
     'No Bull Line Dancers brings mobile line dancing to weddings, parties, corporate events, and bars from Forestport, NY across Hudson Valley and Upstate NY.',
-  metadataBase: new URL('https://nobulllinedancers.com'),
+  metadataBase: new URL(siteUrl),
+  authors: [{ name: 'JxB', url: 'https://www.meetmister.black' }],
+  creator: 'JxB',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon.jpg', type: 'image/jpeg', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-icon.jpg', type: 'image/jpeg', sizes: '180x180' }],
+  },
   openGraph: {
     title: 'No Bull Line Dancers | Mobile Line Dancing for Events',
     description:
@@ -56,8 +67,8 @@ const localBusinessSchema = {
   description:
     'Mobile line dancing instruction for weddings, parties, bars, venues, and corporate events.',
   telephone: '+1-845-416-3403',
-  url: 'https://nobulllinedancers.com',
-  image: 'https://nobulllinedancers.com/images/logo1.jpg',
+  url: siteUrl,
+  image: `${siteUrl}/images/logo1.jpg`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Forestport',
