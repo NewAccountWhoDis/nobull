@@ -51,19 +51,20 @@ export async function EventsSection() {
 }
 
 function EventCard({ event }: { event: PublicEvent }) {
-  const { day, month } = formatDateBadge(event.eventDate)
+  const { day, month, weekday } = formatDateBadge(event.eventDate)
+  const note = formatEventNote(event.note, weekday)
 
   return (
     <div className="flex gap-5 rounded-sm border border-saddle bg-espresso p-5 text-left card-glow">
-      <div className="min-w-[64px] rounded-sm bg-gold px-4 py-3 text-center font-black text-espresso">
+      <div className="min-w-[72px] rounded-sm bg-gold px-3 py-3 text-center font-black text-espresso">
         <div className="font-serif text-3xl leading-none">{day}</div>
         <div className="font-sans text-[9px] tracking-[0.18em]">{month}</div>
+        <div className="mt-1 font-sans text-[9px] tracking-[0.12em]">{weekday.slice(0, 3).toUpperCase()}</div>
       </div>
       <div className="py-1">
         <h3 className="font-sans text-sm font-black uppercase tracking-[0.12em] text-gold">{event.title}</h3>
-        <p className="mt-2 font-sans text-sm leading-6 text-leather">
-          {event.location}{event.note ? ` / ${event.note}` : ''}
-        </p>
+        <p className="mt-2 font-sans text-sm leading-6 text-leather">{event.location}</p>
+        {note && <p className="font-sans text-sm leading-6 text-leather">{note}</p>}
       </div>
     </div>
   )
@@ -76,7 +77,19 @@ function formatDateBadge(value: string) {
   return {
     day: String(day).padStart(2, '0'),
     month: date.toLocaleString('en-US', { month: 'short' }).toUpperCase(),
+    weekday: date.toLocaleString('en-US', { weekday: 'long' }),
   }
+}
+
+function formatEventNote(note: string, weekday: string) {
+  if (!note) {
+    return ''
+  }
+
+  const shortWeekday = weekday.slice(0, 3)
+  const weekdayPrefix = new RegExp(`^(${weekday}|${shortWeekday})\\b[\\s,:/-]*`, 'i')
+
+  return note.replace(weekdayPrefix, '').trim()
 }
 
 function FacebookIcon() {

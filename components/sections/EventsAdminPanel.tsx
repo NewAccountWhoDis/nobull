@@ -115,7 +115,7 @@ export function EventsAdminPanel({
           </label>
           <label className="grid gap-2">
             <span className="admin-label">Note</span>
-            <input name="note" placeholder="Thursday at 6p" disabled={!databaseReady} className="admin-input" />
+            <input name="note" placeholder="Time and info (ie 6p members only)" disabled={!databaseReady} className="admin-input" />
           </label>
           <label className="flex items-center gap-3 font-sans text-sm font-bold text-parchment">
             <input type="checkbox" name="published" defaultChecked disabled={!databaseReady} className="h-5 w-5 accent-gold" />

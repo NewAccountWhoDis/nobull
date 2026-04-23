@@ -52,7 +52,7 @@ export function EventForm({ action, event, submitLabel, disabled = false }: Even
         <input
           id="note"
           name="note"
-          placeholder="Thursday at 6p"
+          placeholder="Time and info (ie 6p members only)"
           defaultValue={event?.note}
           disabled={disabled}
           className="admin-input"
